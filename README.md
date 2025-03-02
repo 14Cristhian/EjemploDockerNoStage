@@ -1,19 +1,28 @@
-docker-basic-buildx
-Aplicación básica que permite la ejecución de un proceso cada 5 segundos.
+# Docker Basic Buildx
 
-Comandos permitidos
+Este proyecto es una aplicación básica que ejecuta un proceso cada 5 segundos. Está diseñado para ser una referencia sobre cómo trabajar con Docker Buildx, plataformas cruzadas y el manejo de aplicaciones con Node.js.
 
-npm install
-npm run test
-npm start
-Comandos importantes usados aquí
-BUILDX
-Buildx Referencia
+## Comandos permitidos
 
-# docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 \
-#    -t klerith/cron-ticker:latest --push .
+Los siguientes comandos están disponibles para el uso en el proyecto:
 
-# /app /usr /lib
-# FROM --platform=linux/amd64 node:19.2-alpine3.16
-# FROM node:19.2-alpine3.16
-FROM --platform=$BUILDPLATFORM node:19.2-alpine3.16
+### 1. `npm install`
+Instala las dependencias necesarias para ejecutar el proyecto.
+
+### 2. `npm run test`
+Ejecuta las pruebas unitarias del proyecto.
+
+### 3. `npm start`
+Inicia la aplicación en modo de ejecución.
+
+## Comandos importantes usados aquí
+
+En este proyecto se utiliza Docker Buildx para realizar compilaciones multiplataforma. A continuación se muestra un ejemplo de cómo construir la imagen con Buildx.
+
+### Buildx Referencia
+
+Para crear la imagen del contenedor con soporte para varias plataformas (como `linux/amd64`, `linux/arm64`, y `linux/arm/v7`), puedes usar el siguiente comando:
+
+```bash
+docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 \
+   -t klerith/cron-ticker:latest --push .
